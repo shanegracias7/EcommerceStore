@@ -19,11 +19,11 @@ namespace API
             try
             {
                 context.Database.Migrate();
+                DbInitializer.Initialize(context);
             }
             catch(Exception ex)
             {
-                logger.LogError(ex,"Problem migrating data");
-                DbInitializer.Initialize(context);
+                logger.LogError(ex,"Problem migrating data");    
             }
             host.Run();
         }
