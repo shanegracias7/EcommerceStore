@@ -1,4 +1,4 @@
-import { Grid, List } from '@mui/material'
+import { Grid } from '@mui/material'
 import { product } from '../../app/models/product';
 import ProductCard from './ProductCard';
 

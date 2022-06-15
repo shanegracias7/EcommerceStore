@@ -1,12 +1,20 @@
-import { AppBar, Toolbar, Typography } from '@mui/material'
-import React from 'react'
+import { AppBar, Switch, Toolbar, Typography } from '@mui/material'
 
-export default function Header() {
+interface props{
+    darkMode:boolean;
+    handleThemeChange:()=>void;
+}
+
+export default function Header({darkMode,handleThemeChange}:props) {
   return (
     <AppBar position='static' sx={{mb:4}}>
         <Toolbar>
             <Typography variant='h6'>STORE</Typography>
+            <Switch checked={darkMode} onChange={handleThemeChange}/>
         </Toolbar>
     </AppBar>
   )
 }
+
+
+
