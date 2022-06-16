@@ -1,4 +1,5 @@
 
+import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -20,6 +21,41 @@ export default function ProductDetails() {
   if(loading) return <h1>loading...</h1>
   if(!product) return <h1>product not found...</h1>
   return (
-    <div>{product.name}</div>
+    <Grid container spacing={6}>
+      <Grid item xs={6}>
+        <img src={product.pictureURL} alt='product' style={{width:'100%'}}/>
+      </Grid>
+      <Grid item xs={6}>
+        <Typography variant='h3'>{product.name}</Typography>
+        <Divider sx={{mb:2}}/>
+        <Typography variant='h4' color='secondary'> ${(product.price/100).toFixed(2)}</Typography>
+        <TableContainer>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>{product.name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Description</TableCell>
+                <TableCell>{product.description}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Type</TableCell>
+                <TableCell>{product.type}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Brand</TableCell>
+                <TableCell>{product.brand}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Quantity</TableCell>
+                <TableCell>{product.quantity}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Grid>
+    </Grid>
   )
 }
