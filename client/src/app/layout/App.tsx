@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/catalog" component={Catalog} />
         <Route path="/about" component={AboutPage} />
         <Route path="/contact" component={ContactPage} />
-        <Route path="/contact/:id" component={ProductDetails} />
+        <Route path="/catalog/:id" component={ProductDetails} />
       </Container>
     </ThemeProvider>
   );
