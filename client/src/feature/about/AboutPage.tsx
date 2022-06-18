@@ -18,7 +18,7 @@ export default function AboutPage() {
         <Button variant='contained' onClick={()=>agent.TestErrors.get500Error().catch((error)=>console.error(error))}>Test 500 error</Button>
         <Button variant='contained' onClick={()=>getValidationErrors()}>Test validation error</Button>
       </ButtonGroup>
-      {validationErrors.length&&
+      {validationErrors.length>0&&
         <Alert severity='error'>
           <AlertTitle>ValidationError</AlertTitle>
           <List>

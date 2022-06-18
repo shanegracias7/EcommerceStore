@@ -9,6 +9,7 @@ import Catalog from "../../feature/catalog/Catalog"
 import ProductDetails from "../../feature/catalog/ProductDetails";
 import ContactPage from "../../feature/contact/ContactPage";
 import HomePage from "../../feature/home/HomePage";
+import ServerError from "../errors/ServerError";
 import Header from "./Header";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/about" component={AboutPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/catalog/:id" component={ProductDetails} />
+        <Route path="/server-error" component={ServerError} />
       </Container>
     </ThemeProvider>
   );
