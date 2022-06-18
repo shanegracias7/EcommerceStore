@@ -4,6 +4,16 @@ axios.defaults.baseURL = "http://localhost:5000/api/";
 
 const responseBody = (response:AxiosResponse) => response.data
 
+axios.interceptors.response.use(
+    (response)=>{
+        return response
+    },
+    (error)=>{
+        console.error("axios interceptor caught an error")
+        return Promise.reject(error.response)
+    }
+)
+
 const request = {
     get: (url:string)=> axios.get(url).then(responseBody),
     post: (url:string,body:{})=> axios.post(url,body).then(responseBody),
