@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import agent from '../../app/api/agent';
 import { product } from '../../app/models/product';
+import Loading from "../../app/layout/Loading";
 
 export default function ProductDetails() {
 
@@ -18,7 +19,7 @@ export default function ProductDetails() {
          .finally(()=>setLoading(false))
   },[id])
 
-  if(loading) return <h1>loading...</h1>
+  if(loading) return <Loading message="Loading product..."/>
   if(!product) return <h1>product not found...</h1>
   return (
     <Grid container spacing={6}>

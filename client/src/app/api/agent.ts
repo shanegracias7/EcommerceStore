@@ -2,12 +2,15 @@ import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { history } from "../..";
 
+const sleep = ()=> new Promise(response=>setTimeout(response,500))
+
 axios.defaults.baseURL = "http://localhost:5000/api/";
 
 const responseBody = (response:AxiosResponse) => response.data
 
 axios.interceptors.response.use(
-    (response)=>{
+    async response=>{
+        await sleep();
         return response
     },
     (error)=>{
