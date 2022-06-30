@@ -60,6 +60,17 @@ namespace API.Controllers
             return BadRequest(new ProblemDetails{Title="Problem saving Title to basket"});
         }
 
+        [HttpDelete]
+        public async Task<ActionResult> RemoveBasketItem(int productId, int quantity)
+        {
+            var basket = await RetrieveBasket();
+            if (basket == null) return NotFound();
+            basket.RemoveItem(productId,quantity);
+            var result = await _context.SaveChangesAsync()>0;
+            if (result) return Ok();
+            return BadRequest(new ProblemDetails{Title="Problem removing item from the basket"});
+
+        }
         private Basket CreateBasket()
         {
             var buyerId = Guid.NewGuid().ToString();
