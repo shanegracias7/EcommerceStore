@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import AboutPage from "../../feature/about/AboutPage";
+import BasketPage from "../../feature/basket/BasketPage";
 import Catalog from "../../feature/catalog/Catalog"
 import ProductDetails from "../../feature/catalog/ProductDetails";
 import ContactPage from "../../feature/contact/ContactPage";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/contact" component={ContactPage} />
           <Route path="/catalog/:id" component={ProductDetails} />
           <Route path="/server-error" component={ServerError} />
+          <Route path="/basket" component={BasketPage} />
           <Route component={NotFound} />
         </Switch>
         

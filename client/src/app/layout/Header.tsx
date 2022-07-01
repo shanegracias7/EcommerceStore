@@ -1,7 +1,7 @@
 import { ShoppingCartCheckout } from '@mui/icons-material';
 import { AppBar, Badge, IconButton, List, ListItem, Switch, Toolbar, Typography } from '@mui/material'
 import { Box } from '@mui/system';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 interface props{
     darkMode:boolean;
@@ -62,7 +62,7 @@ export default function Header({darkMode,handleThemeChange}:props) {
 
             <Box display='flex' alignItems='center'>
               <Switch checked={darkMode} onChange={handleThemeChange}/>
-              <IconButton>
+              <IconButton component={Link} to='/basket'>
                   <Badge badgeContent={4} color="secondary">
                     <ShoppingCartCheckout/>
                   </Badge>
