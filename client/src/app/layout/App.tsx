@@ -30,6 +30,7 @@ function App() {
       .catch(error=>console.error(error))
       .finally(()=>setLoading(false))
     }
+    else setLoading(false)
   },[setBasket])
 
   const [darkMode,setDarkMode] =useState(true);
