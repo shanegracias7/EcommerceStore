@@ -5,6 +5,7 @@ import App from './app/layout/App';
 import './app/layout/styles.css'
 import reportWebVitals from './reportWebVitals';
 import {createBrowserHistory} from 'history'
+import { StoreProvider } from './app/context/StoreContest';
 
 export const history = createBrowserHistory()
 
@@ -15,7 +16,9 @@ root.render(
   
   <Router history={history}>
     <React.StrictMode>
-      <App />
+      <StoreProvider>
+        <App />
+      </StoreProvider>
     </React.StrictMode>
   </Router>  
 
