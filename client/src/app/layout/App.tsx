@@ -1,6 +1,6 @@
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -10,11 +10,28 @@ import Catalog from "../../feature/catalog/Catalog"
 import ProductDetails from "../../feature/catalog/ProductDetails";
 import ContactPage from "../../feature/contact/ContactPage";
 import HomePage from "../../feature/home/HomePage";
+import agent from "../api/agent";
+import { useStoreContext } from "../context/StoreContest";
 import NotFound from "../errors/NotFound";
 import ServerError from "../errors/ServerError";
+import { getCookie } from "../util/util";
 import Header from "./Header";
+import Loading from "./Loading";
 
 function App() {
+  const {setBasket} = useStoreContext();
+  const [loading,setLoading] = useState(true);
+
+  useEffect(()=>{
+    const buyerId = getCookie('buyerId')
+    if(buyerId){
+      agent.Basket.get()
+      .then(basket=>setBasket(basket))
+      .catch(error=>console.error(error))
+      .finally(()=>setLoading(false))
+    }
+  },[setBasket])
+
   const [darkMode,setDarkMode] =useState(true);
   const paletteMode = darkMode?'dark':'light'
   const theme = createTheme({
@@ -29,6 +46,9 @@ function App() {
   function handleThemeChange(){
     setDarkMode(!darkMode);
   }
+
+  if(loading)  return <Loading message="initialising app..."/>
+
   return (
     <ThemeProvider theme={theme}>
       <ToastContainer position="bottom-right" hideProgressBar theme="colored"/>

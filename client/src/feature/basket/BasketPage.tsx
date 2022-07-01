@@ -13,8 +13,7 @@ export default function BasketPage() {
         agent.Basket.get()
         .then((basket)=>setBasket(basket))
         .catch(error=>console.error(error))
-        .finally(()=>setLoading(false))
-        setLoading(true)    
+        .finally(()=>setLoading(false))   
     },[])
 
     if (loading) return <Loading message='loading basket...'/>
