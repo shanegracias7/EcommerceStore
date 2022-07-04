@@ -5,6 +5,7 @@ import { useState } from 'react';
 import agent from '../../app/api/agent';
 import { LoadingButton } from '@mui/lab';
 import { useStoreContext } from '../../app/context/StoreContest';
+import { currencyFormat } from '../../app/util/util';
 
 interface props{
   product:product;
@@ -41,7 +42,7 @@ export default function ProductCard({product}:props) {
       />
       <CardContent>
         <Typography gutterBottom color={"secondary"} variant="h5" component="div">
-          ${(product.price/100).toFixed(2)}
+          {currencyFormat(product.price)}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {product.brand}/{product.type}
