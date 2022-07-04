@@ -8,6 +8,7 @@ import AboutPage from "../../feature/about/AboutPage";
 import BasketPage from "../../feature/basket/BasketPage";
 import Catalog from "../../feature/catalog/Catalog"
 import ProductDetails from "../../feature/catalog/ProductDetails";
+import CheckoutPage from "../../feature/checkout/CheckoutPage";
 import ContactPage from "../../feature/contact/ContactPage";
 import HomePage from "../../feature/home/HomePage";
 import agent from "../api/agent";
@@ -64,6 +65,7 @@ function App() {
           <Route path="/catalog/:id" component={ProductDetails} />
           <Route path="/server-error" component={ServerError} />
           <Route path="/basket" component={BasketPage} />
+          <Route path="/checkout" component={CheckoutPage} />
           <Route component={NotFound} />
         </Switch>
         

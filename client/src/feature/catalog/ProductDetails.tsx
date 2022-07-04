@@ -108,7 +108,7 @@ export default function ProductDetails() {
               fullWidth
               loading={submitting}
               onClick={handleUpdateCart}
-              disabled={item?.quantity === quantity || !item && quantity===0}
+              disabled={item?.quantity === quantity || (!item && quantity===0)}
             >
               {item?'Update Quantity':'Add to Cart'}
             </LoadingButton>
