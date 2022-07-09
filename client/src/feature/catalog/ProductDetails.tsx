@@ -7,7 +7,7 @@ import { product } from '../../app/models/product';
 import Loading from "../../app/layout/Loading";
 import { LoadingButton } from '@mui/lab';
 import { useAppSelector, useAppDispatch } from '../../app/store/configureStore';
-import { setBasket, removeItem } from '../basket/basketSlice';
+import { addBasketItemAsync, removeBasketItemAsync, setBasket} from '../basket/basketSlice';
 
 export default function ProductDetails() {
 
@@ -15,8 +15,7 @@ export default function ProductDetails() {
   const [product, setProduct]=useState<product|null>(null);
   const [loading, setLoading]=useState(true);
   const [quantity,SetQuantity] = useState(0);
-  const [submitting,SetSubmitting] = useState(false)
-  const {basket} =useAppSelector(state=>state.basket);
+  const {basket,status} =useAppSelector(state=>state.basket);
   const dispatch = useAppDispatch()
   
   const item = basket?.items.find(item=>item.productId===product?.id)
@@ -35,21 +34,13 @@ export default function ProductDetails() {
   }
 
   function handleUpdateCart(){
-    SetSubmitting(true)
     if(!item||quantity>item.quantity){
       const updatedQuantity = item? quantity-item.quantity:quantity
-
-      agent.Basket.addItem(product?.id!,updatedQuantity)
-        .then(basket=>dispatch(setBasket(basket)))
-        .catch(error=>console.error(error))
-        .finally(()=>SetSubmitting(false))
+      dispatch(addBasketItemAsync({productId:product?.id!,quantity:updatedQuantity}))
     }
     else{
       const updatedQuantity =item.quantity-quantity
-      agent.Basket.removeItem(product?.id!,updatedQuantity)
-        .then(()=>dispatch(removeItem({productId:product?.id!,quantity:updatedQuantity})))
-        .catch(error=>console.error(error))
-        .finally(()=>SetSubmitting(false))
+      dispatch(removeBasketItemAsync({productId:product?.id!,quantity:updatedQuantity}))
     }
   }
 
@@ -108,7 +99,7 @@ export default function ProductDetails() {
               size ='large'
               variant='contained'
               fullWidth
-              loading={submitting}
+              loading={status.includes('Pending')}
               onClick={handleUpdateCart}
               disabled={item?.quantity === quantity || (!item && quantity===0)}
             >
