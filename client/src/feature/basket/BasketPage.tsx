@@ -4,11 +4,13 @@ import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import agent from '../../app/api/agent';
-import { useStoreContext } from '../../app/context/StoreContest'
+import { useAppDispatch, useAppSelector } from '../../app/store/configureStore';
+import { removeItem, setBasket } from './basketSlice';
 import BasketSummary from './BasketSummary';
 
 export default function BasketPage() {
-    const {basket,setBasket,removeItem} =useStoreContext();
+    const {basket} =useAppSelector(state=>state.basket);
+    const dispatch = useAppDispatch()
     const [status,setStatus]=useState({
         loading:false,
         name:''
@@ -17,14 +19,14 @@ export default function BasketPage() {
     function handleAddItem(productId:number,name:string){
         setStatus({loading:true,name})
         agent.Basket.addItem(productId)
-        .then(basket=>setBasket(basket))
+        .then(basket=>dispatch(setBasket(basket)))
         .catch(error=>console.error(error))
         .finally(()=>setStatus({loading:false,name:''}))
     }
     function handleRemoveItem(productId:number,quantity=1,name:string){
         setStatus({loading:true,name})
         agent.Basket.removeItem(productId,quantity)
-        .then(basket=>removeItem(productId,quantity))
+        .then(basket=>dispatch(removeItem({productId,quantity})))
         .catch(error=>console.error(error))
         .finally(()=>setStatus({loading:false,name:''}))
     }

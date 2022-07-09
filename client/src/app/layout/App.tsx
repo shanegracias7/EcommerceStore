@@ -13,7 +13,6 @@ import CheckoutPage from "../../feature/checkout/CheckoutPage";
 import ContactPage from "../../feature/contact/ContactPage";
 import HomePage from "../../feature/home/HomePage";
 import agent from "../api/agent";
-import { useStoreContext } from "../context/StoreContest";
 import NotFound from "../errors/NotFound";
 import ServerError from "../errors/ServerError";
 import { useAppDispatch } from "../store/configureStore";
@@ -34,7 +33,7 @@ function App() {
       .finally(()=>setLoading(false))
     }
     else setLoading(false)
-  },[setBasket])
+  },[dispatch])
 
   const [darkMode,setDarkMode] =useState(true);
   const paletteMode = darkMode?'dark':'light'

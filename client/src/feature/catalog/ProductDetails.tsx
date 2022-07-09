@@ -5,8 +5,9 @@ import { useParams } from 'react-router-dom'
 import agent from '../../app/api/agent';
 import { product } from '../../app/models/product';
 import Loading from "../../app/layout/Loading";
-import { useStoreContext } from '../../app/context/StoreContest';
 import { LoadingButton } from '@mui/lab';
+import { useAppSelector, useAppDispatch } from '../../app/store/configureStore';
+import { setBasket, removeItem } from '../basket/basketSlice';
 
 export default function ProductDetails() {
 
@@ -15,7 +16,8 @@ export default function ProductDetails() {
   const [loading, setLoading]=useState(true);
   const [quantity,SetQuantity] = useState(0);
   const [submitting,SetSubmitting] = useState(false)
-  const {basket,setBasket,removeItem} = useStoreContext()
+  const {basket} =useAppSelector(state=>state.basket);
+  const dispatch = useAppDispatch()
   
   const item = basket?.items.find(item=>item.productId===product?.id)
 
@@ -38,14 +40,14 @@ export default function ProductDetails() {
       const updatedQuantity = item? quantity-item.quantity:quantity
 
       agent.Basket.addItem(product?.id!,updatedQuantity)
-        .then(basket=>setBasket(basket))
+        .then(basket=>dispatch(setBasket(basket)))
         .catch(error=>console.error(error))
         .finally(()=>SetSubmitting(false))
     }
     else{
       const updatedQuantity =item.quantity-quantity
       agent.Basket.removeItem(product?.id!,updatedQuantity)
-        .then(()=>removeItem(product?.id!,updatedQuantity))
+        .then(()=>dispatch(removeItem({productId:product?.id!,quantity:updatedQuantity})))
         .catch(error=>console.error(error))
         .finally(()=>SetSubmitting(false))
     }
