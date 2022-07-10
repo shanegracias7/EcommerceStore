@@ -7,6 +7,7 @@ import { LoadingButton } from '@mui/lab';
 import { useAppSelector, useAppDispatch } from '../../app/store/configureStore';
 import { addBasketItemAsync, removeBasketItemAsync} from '../basket/basketSlice';
 import { fetchProductAsync, productSelectors } from './catalogSlice';
+import NotFound from '../../app/errors/NotFound';
 
 export default function ProductDetails() {
 
@@ -41,7 +42,7 @@ export default function ProductDetails() {
   }
 
   if(productStatus.includes('Pending')) return <Loading message="Loading product..."/>
-  if(!product) return <h1>product not found...</h1>
+  if(!product) return <NotFound/>
   return (
     <Grid container spacing={6}>
       <Grid item xs={6}>
