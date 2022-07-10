@@ -2,32 +2,28 @@
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import agent from '../../app/api/agent';
-import { product } from '../../app/models/product';
 import Loading from "../../app/layout/Loading";
 import { LoadingButton } from '@mui/lab';
 import { useAppSelector, useAppDispatch } from '../../app/store/configureStore';
 import { addBasketItemAsync, removeBasketItemAsync} from '../basket/basketSlice';
+import { fetchProductAsync, productSelectors } from './catalogSlice';
 
 export default function ProductDetails() {
 
   const {id}=useParams<{id:string}>();
-  const [product, setProduct]=useState<product|null>(null);
-  const [loading, setLoading]=useState(true);
   const [quantity,SetQuantity] = useState(0);
   const {basket,status} =useAppSelector(state=>state.basket);
+  const {status:productStatus} =useAppSelector(state=>state.catalog);
   const dispatch = useAppDispatch()
-  
+  const product = useAppSelector(state=>productSelectors.selectById(state,id))
   const item = basket?.items.find(item=>item.productId===product?.id)
 
   useEffect(()=>{
     if(item) SetQuantity(item.quantity)
+    if(!product){ dispatch(fetchProductAsync(parseInt(id)))
+    }
 
-    agent.Catalog.details(parseInt(id))
-         .then(respose => setProduct(respose))
-         .catch(error=>console.error(error))
-         .finally(()=>setLoading(false))
-  },[id,item])
+  },[id,item,dispatch,product])
 
   function handleInputChange(event:any){
     if(event.target.value>=0) SetQuantity(parseInt(event.target.value))
@@ -44,7 +40,7 @@ export default function ProductDetails() {
     }
   }
 
-  if(loading) return <Loading message="Loading product..."/>
+  if(productStatus.includes('Pending')) return <Loading message="Loading product..."/>
   if(!product) return <h1>product not found...</h1>
   return (
     <Grid container spacing={6}>

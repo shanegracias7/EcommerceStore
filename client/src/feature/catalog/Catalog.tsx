@@ -13,7 +13,7 @@ export default function Catalog() {
 
   useEffect(()=>{
     if(!productsLoaded) dispatch(fetchProductsAsync())
-  },[productsLoaded]
+  },[productsLoaded,dispatch]
   )
   if(status.includes('Pending')) return <Loading message="Loading products..."/>
   return (
