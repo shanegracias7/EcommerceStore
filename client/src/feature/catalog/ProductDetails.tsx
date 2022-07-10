@@ -7,7 +7,7 @@ import { product } from '../../app/models/product';
 import Loading from "../../app/layout/Loading";
 import { LoadingButton } from '@mui/lab';
 import { useAppSelector, useAppDispatch } from '../../app/store/configureStore';
-import { addBasketItemAsync, removeBasketItemAsync, setBasket} from '../basket/basketSlice';
+import { addBasketItemAsync, removeBasketItemAsync} from '../basket/basketSlice';
 
 export default function ProductDetails() {
 
