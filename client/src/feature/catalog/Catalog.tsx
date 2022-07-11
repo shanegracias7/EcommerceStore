@@ -1,10 +1,10 @@
-import { Search } from "@mui/icons-material";
-import { Box, Checkbox, FormControlLabel, FormGroup, FormLabel, Grid, InputAdornment, Pagination, Paper, Radio, RadioGroup, TextField, Typography } from "@mui/material";
+import { Box, Checkbox, FormControlLabel, FormGroup, FormLabel, Grid, Pagination, Paper, Radio, RadioGroup, Typography } from "@mui/material";
 import { useEffect } from "react";
 import Loading from "../../app/layout/Loading";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { fetchFilters, fetchProductsAsync, productSelectors } from "./catalogSlice";
 import ProductList from "./ProductList";
+import ProductSearch from "./ProductSearch";
 
 export default function Catalog() {
 
@@ -35,18 +35,7 @@ export default function Catalog() {
       <Grid container spacing={4}>
       <Grid item xs={3}>
         <Paper sx={{mb:2}}>
-          <TextField 
-            label='Search Products'
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search/>
-                </InputAdornment>
-              ),
-            }}
-          /> 
+          <ProductSearch/>
         </Paper>
         <Paper sx={{ mb: 2, p: 2 }}>
           <FormLabel>Sort</FormLabel>
