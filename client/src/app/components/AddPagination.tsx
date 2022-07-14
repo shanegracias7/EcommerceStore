@@ -1,6 +1,6 @@
 import { Box, Typography, Pagination } from '@mui/material'
-import React from 'react'
 import { MetaData } from '../models/pagination'
+
 
 interface Props{
     metaData:MetaData,

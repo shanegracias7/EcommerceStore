@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xryS7PsIL+Hk/lpsu2cLWIDXJqpty071F0PAacBpqgxc2VhCJEH17o2Ffhzb+orymZsrPUdh83Kv15wdO2UP5A==",
+  "dgSpecHash": "8MaGxc4ej7StuBDXyEU47hydn0qawHcffB9xDzTe7xfbbIK9X/TnZeMEmApJh0sUtSJcS4VVle1q89Y+ILvujw==",
   "success": true,
   "projectFilePath": "/Users/shanegracias/Documents/GitHub/EcommerceStore/API/API.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,8 @@
     "/Users/shanegracias/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
     "/Users/shanegracias/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/Users/shanegracias/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/shanegracias/.nuget/packages/npgsql/6.0.5/npgsql.6.0.5.nupkg.sha512",
+    "/Users/shanegracias/.nuget/packages/npgsql.entityframeworkcore.postgresql/6.0.5/npgsql.entityframeworkcore.postgresql.6.0.5.nupkg.sha512",
     "/Users/shanegracias/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.6/sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "/Users/shanegracias/.nuget/packages/sqlitepclraw.core/2.0.6/sqlitepclraw.core.2.0.6.nupkg.sha512",
     "/Users/shanegracias/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.6/sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",

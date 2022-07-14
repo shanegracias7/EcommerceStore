@@ -11,7 +11,6 @@ import Catalog from "../../feature/catalog/Catalog"
 import ProductDetails from "../../feature/catalog/ProductDetails";
 import CheckoutPage from "../../feature/checkout/CheckoutPage";
 import ContactPage from "../../feature/contact/ContactPage";
-import HomePage from "../../feature/home/HomePage";
 import agent from "../api/agent";
 import NotFound from "../errors/NotFound";
 import ServerError from "../errors/ServerError";
@@ -59,7 +58,7 @@ function App() {
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
       <Container>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={Catalog} />
           <Route exact path="/catalog" component={Catalog} />
           <Route path="/about" component={AboutPage} />
           <Route path="/contact" component={ContactPage} />

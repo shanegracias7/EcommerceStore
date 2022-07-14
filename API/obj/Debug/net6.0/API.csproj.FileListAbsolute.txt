@@ -52,3 +52,6 @@
 /Users/shanegracias/Documents/GitHub/EcommerceStore/API/bin/Debug/net6.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/shanegracias/Documents/GitHub/EcommerceStore/API/bin/Debug/net6.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/shanegracias/Documents/GitHub/EcommerceStore/API/bin/Debug/net6.0/runtimes/win-x86/native/e_sqlite3.dll
+/Users/shanegracias/Documents/GitHub/EcommerceStore/API/bin/Debug/net6.0/API.staticwebassets.runtime.json
+/Users/shanegracias/Documents/GitHub/EcommerceStore/API/bin/Debug/net6.0/Npgsql.dll
+/Users/shanegracias/Documents/GitHub/EcommerceStore/API/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll

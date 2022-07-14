@@ -1,4 +1,4 @@
-import { Box, Checkbox, FormControlLabel, FormGroup, FormLabel, Grid, Pagination, Paper, Radio, RadioGroup, Typography } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import { useEffect } from "react";
 import AddPagination from "../../app/components/AddPagination";
 import CheckBoxButton from "../../app/components/CheckBoxButton";
@@ -13,7 +13,7 @@ export default function Catalog() {
 
   const products = useAppSelector(productSelectors.selectAll)
   const dispatch = useAppDispatch()
-  const {productsLoaded,status,filtersLoaded,brands,types,productParams,metaData} =useAppSelector(state=>state.catalog)
+  const {productsLoaded,filtersLoaded,brands,types,productParams,metaData} =useAppSelector(state=>state.catalog)
 
   const sortOption =[
     {value:'name',label:'Alphabetical'},

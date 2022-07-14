@@ -1,5 +1,4 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
 import agent from "../../app/api/agent";
 import { MetaData } from "../../app/models/pagination";
 import { product, ProductParams } from "../../app/models/product";

@@ -1,7 +1,6 @@
 import { Search } from '@mui/icons-material'
 import { TextField, InputAdornment, debounce } from '@mui/material'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/store/configureStore'
 import { setProductParams } from './catalogSlice'
 
