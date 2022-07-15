@@ -2,11 +2,12 @@
 > Built a full stack E-commerce web store using .Net and React
 
 ## Key features
-1. view products
-2. add products to cart
-3. pagination
-4. filtering /sorting/ searching product
-5. theme light/dark
+1. fetch products from database
+2. view products
+3. add products to cart
+4. pagination
+5. filtering /sorting/ searching product
+6. theme light/dark
 
 ## Technologies learnt
 1. Entity framework
